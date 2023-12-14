@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MissleResource" load_steps=3 format=3 uid="uid://cbayiecx3h5e1"]
+
+[ext_resource type="Texture2D" uid="uid://c4w1r4mlkrcg4" path="res://games/5(Space Invanders)/images/Missiles/spaceMissiles_004.png" id="2_7fc7h"]
+[ext_resource type="Script" path="res://games/5(Space Invanders)/scripts/missle_resource.gd" id="2_k0mjr"]
+
+[resource]
+script = ExtResource("2_k0mjr")
+speed = 900
+speed_rand_range = 3
+damage = 5
+texture = ExtResource("2_7fc7h")

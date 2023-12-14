@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7dq81yjv8tqr"]
+
+[ext_resource type="Texture2D" uid="uid://p1plueyl2b2u" path="res://games/5(Space Invanders)/images/Ships/spaceShips_007.png" id="1_1ul21"]
+[ext_resource type="Script" path="res://games/5(Space Invanders)/scripts/spaceship.gd" id="1_o8ojy"]
+[ext_resource type="Texture2D" uid="uid://ds0qj2j0kw302" path="res://games/5(Space Invanders)/images/Effects/spaceEffects_003.png" id="2_ed7od"]
+[ext_resource type="Script" path="res://games/5(Space Invanders)/scripts/flame.gd" id="3_2w67k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrrgc"]
+radius = 57.0351
+
+[node name="Spaceship" type="Node2D"]
+script = ExtResource("1_o8ojy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1ul21")
+
+[node name="Flame" type="Sprite2D" parent="."]
+position = Vector2(-28.8351, 50.4699)
+rotation = -3.14159
+scale = Vector2(3, 3)
+texture = ExtResource("2_ed7od")
+offset = Vector2(0.38829, -11.8434)
+script = ExtResource("3_2w67k")
+
+[node name="Flame2" type="Sprite2D" parent="."]
+position = Vector2(28, 52)
+rotation = -3.14159
+scale = Vector2(3, 3)
+texture = ExtResource("2_ed7od")
+offset = Vector2(0.38829, -11.8434)
+script = ExtResource("3_2w67k")
+
+[node name="BulletSpawnPoints" type="Node2D" parent="."]
+
+[node name="0" type="Marker2D" parent="BulletSpawnPoints"]
+position = Vector2(-38, -57)
+
+[node name="1" type="Marker2D" parent="BulletSpawnPoints"]
+position = Vector2(39, -57)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rrrgc")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

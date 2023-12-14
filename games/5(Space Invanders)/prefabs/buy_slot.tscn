@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv7ufs4etn4r5"]
+
+[ext_resource type="Script" path="res://games/5(Space Invanders)/scripts/buy_slot.gd" id="1_5tk2x"]
+[ext_resource type="Texture2D" uid="uid://4sx5bdu1uxoy" path="res://games/5(Space Invanders)/images/Missiles/spaceMissiles_001.png" id="2_mmnqi"]
+[ext_resource type="Resource" uid="uid://cjm3l20er5nvj" path="res://games/5(Space Invanders)/resources/missles/1.tres" id="2_qkcux"]
+[ext_resource type="FontFile" uid="uid://cadt6qi1i8f5n" path="res://fonts/Goldman-Bold.ttf" id="3_bbshq"]
+
+[node name="Slot" type="Panel"]
+custom_minimum_size = Vector2(100, 100)
+script = ExtResource("1_5tk2x")
+missle_resource = ExtResource("2_qkcux")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.77
+texture = ExtResource("2_mmnqi")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("3_bbshq")
+text = "Buy 10$"
+
+[connection signal="button_down" from="VBoxContainer/Button" to="." method="_on_button_button_down"]

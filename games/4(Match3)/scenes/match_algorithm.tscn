@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://gfcdmrhog1pc"]
+
+[ext_resource type="Script" path="res://games/4(Match3)/scenes/match_algorithm.gd" id="1_l82y6"]
+
+[node name="MatchAlgorithm" type="Node2D"]
+script = ExtResource("1_l82y6")

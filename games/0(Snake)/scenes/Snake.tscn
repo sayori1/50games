@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3suj02fllwem"]
+[gd_scene load_steps=3 format=3 uid="uid://b3suj02fllwem"]
 
 [ext_resource type="Script" path="res://games/0(Snake)/scripts/game.gd" id="1_b7f42"]
+[ext_resource type="Script" path="res://games/0(Snake)/scripts/scoreLabel.gd" id="2_8oecn"]
 
 [node name="Snake" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_b7f42")
 
 [node name="GameOverMenu" type="CenterContainer" parent="."]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -35,5 +37,20 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 4
 text = "Replay"
+
+[node name="Score" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 93.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 2
+text_direction = 2
+script = ExtResource("2_8oecn")
 
 [connection signal="button_down" from="GameOverMenu/VBoxContainer/Replay" to="." method="_on_replay_button_down"]

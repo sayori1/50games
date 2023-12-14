@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://crct2koovtqe5"]
+
+[ext_resource type="Texture2D" uid="uid://dipe1q27y86fx" path="res://games/4(Match3)/images/bg.png" id="1_j5lmn"]
+[ext_resource type="Script" path="res://games/4(Match3)/scripts/match3.gd" id="1_n058u"]
+[ext_resource type="Script" path="res://games/4(Match3)/scripts/slot_manager.gd" id="3_3suuv"]
+[ext_resource type="FontFile" uid="uid://yiygys2c012w" path="res://fonts/Goldman-Regular.ttf" id="4_vpovj"]
+[ext_resource type="Script" path="res://games/4(Match3)/scripts/score.gd" id="5_dwhy1"]
+
+[node name="Match3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n058u")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_j5lmn")
+expand_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+layout_mode = 2
+columns = 4
+script = ExtResource("3_3suuv")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 142.0
+offset_bottom = 43.0
+pivot_offset = Vector2(69, 17)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_vpovj")
+theme_override_font_sizes/font_size = 30
+text = "Score: 0"
+script = ExtResource("5_dwhy1")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr2cm2ctt305w"]
+
+[ext_resource type="Script" path="res://games/3(Breakout)/scripts/brick.gd" id="1_0g8g3"]
+[ext_resource type="Texture2D" uid="uid://ca50tw81dak3j" path="res://games/3(Breakout)/images/03-Breakout-Tiles.png" id="1_nk6ax"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fics"]
+size = Vector2(192, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgab5"]
+size = Vector2(206, 85)
+
+[node name="Brick" type="StaticBody2D"]
+position = Vector2(54, 34)
+script = ExtResource("1_0g8g3")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_nk6ax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1fics")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 2.5)
+shape = SubResource("RectangleShape2D_dgab5")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

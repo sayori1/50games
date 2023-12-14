@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj2jgx0fx5lb3"]
+
+[ext_resource type="Script" path="res://games/5(Space Invanders)/scripts/missle_slot.gd" id="1_v3tyd"]
+[ext_resource type="Texture2D" uid="uid://4sx5bdu1uxoy" path="res://games/5(Space Invanders)/images/Missiles/spaceMissiles_001.png" id="2_uwl6u"]
+[ext_resource type="FontFile" uid="uid://cadt6qi1i8f5n" path="res://fonts/Goldman-Bold.ttf" id="3_2rr8k"]
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(70, 0)
+mouse_filter = 1
+script = ExtResource("1_v3tyd")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_uwl6u")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -23.0
+offset_right = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_2rr8k")
+text = "0"
+horizontal_alignment = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

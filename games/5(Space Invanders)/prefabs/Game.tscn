@@ -1,0 +1,265 @@
+[gd_scene load_steps=21 format=3 uid="uid://cod16m5i2ghiv"]
+
+[ext_resource type="PackedScene" uid="uid://c7dq81yjv8tqr" path="res://games/5(Space Invanders)/prefabs/Spaceship.tscn" id="1_mqe7i"]
+[ext_resource type="Script" path="res://games/5(Space Invanders)/scripts/missle_slot_manager.gd" id="2_sw62t"]
+[ext_resource type="PackedScene" uid="uid://dj2jgx0fx5lb3" path="res://games/5(Space Invanders)/prefabs/MissleSlot.tscn" id="3_12fq3"]
+[ext_resource type="FontFile" uid="uid://cadt6qi1i8f5n" path="res://fonts/Goldman-Bold.ttf" id="4_tejwx"]
+[ext_resource type="Script" path="res://games/5(Space Invanders)/scripts/money_label.gd" id="5_mqb56"]
+[ext_resource type="PackedScene" uid="uid://bv7ufs4etn4r5" path="res://games/5(Space Invanders)/prefabs/buy_slot.tscn" id="5_uysop"]
+[ext_resource type="Script" path="res://games/5(Space Invanders)/scripts/buy_slot.gd" id="5_xgitf"]
+[ext_resource type="Texture2D" uid="uid://4sx5bdu1uxoy" path="res://games/5(Space Invanders)/images/Missiles/spaceMissiles_001.png" id="5_y6oyt"]
+[ext_resource type="Resource" uid="uid://cpixngl0wt8fi" path="res://games/5(Space Invanders)/resources/missles/0.tres" id="7_j0p4m"]
+[ext_resource type="Script" path="res://games/5(Space Invanders)/scripts/enemies_manager.gd" id="7_s85jd"]
+[ext_resource type="Script" path="res://games/5(Space Invanders)/scripts/falling_object_manager.gd" id="8_dyqw5"]
+[ext_resource type="Resource" uid="uid://cbayiecx3h5e1" path="res://games/5(Space Invanders)/resources/missles/2.tres" id="8_m6kwm"]
+[ext_resource type="Resource" uid="uid://xcmbgrkubwkb" path="res://games/5(Space Invanders)/resources/missles/3.tres" id="9_ghi3d"]
+[ext_resource type="Resource" uid="uid://bnqhk4h4gkxqx" path="res://games/5(Space Invanders)/resources/missles/4.tres" id="10_jh1gc"]
+[ext_resource type="Resource" uid="uid://ds6fqy2omh4pc" path="res://games/5(Space Invanders)/resources/missles/5.tres" id="11_6irfs"]
+[ext_resource type="Resource" uid="uid://clji7hb46h325" path="res://games/5(Space Invanders)/resources/missles/6.tres" id="12_ue5rv"]
+[ext_resource type="Resource" uid="uid://de6vagovr5fmo" path="res://games/5(Space Invanders)/resources/missles/7.tres" id="13_yovka"]
+[ext_resource type="Resource" uid="uid://dhh44evc08x26" path="res://games/5(Space Invanders)/resources/missles/8.tres" id="14_vurmt"]
+[ext_resource type="Resource" uid="uid://dykv0804dftcn" path="res://games/5(Space Invanders)/resources/missles/9.tres" id="15_xgh2t"]
+
+[sub_resource type="GDScript" id="GDScript_bi7yi"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_button_down() -> void:
+	get_tree().quit()
+"
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Spaceship" parent="." instance=ExtResource("1_mqe7i")]
+unique_name_in_owner = true
+position = Vector2(545, 528)
+
+[node name="Inventory" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("2_sw62t")
+
+[node name="Panel" parent="Inventory" instance=ExtResource("3_12fq3")]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -157.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 71.0
+grow_horizontal = 0
+mouse_filter = 0
+theme_override_fonts/font = ExtResource("4_tejwx")
+text = "100$"
+horizontal_alignment = 2
+script = ExtResource("5_mqb56")
+
+[node name="XpLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 150.0
+offset_bottom = 64.0
+mouse_filter = 0
+theme_override_fonts/font = ExtResource("4_tejwx")
+text = "0xp"
+
+[node name="FallenObjects" type="Node2D" parent="."]
+script = ExtResource("8_dyqw5")
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource("7_s85jd")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -546.0
+offset_right = 546.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_tejwx")
+text = "Space ship panel
+"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TabContainer" type="TabContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Shop" type="MarginContainer" parent="Panel/MarginContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Shop" type="GridContainer" parent="Panel/MarginContainer/TabContainer/Shop"]
+layout_mode = 2
+columns = 6
+
+[node name="Slot" parent="Panel/MarginContainer/TabContainer/Shop/Shop" instance=ExtResource("5_uysop")]
+layout_mode = 2
+missle_resource = ExtResource("7_j0p4m")
+
+[node name="Slot2" parent="Panel/MarginContainer/TabContainer/Shop/Shop" instance=ExtResource("5_uysop")]
+layout_mode = 2
+
+[node name="Slot3" parent="Panel/MarginContainer/TabContainer/Shop/Shop" instance=ExtResource("5_uysop")]
+layout_mode = 2
+missle_resource = ExtResource("8_m6kwm")
+
+[node name="Slot4" parent="Panel/MarginContainer/TabContainer/Shop/Shop" instance=ExtResource("5_uysop")]
+layout_mode = 2
+missle_resource = ExtResource("9_ghi3d")
+
+[node name="Slot5" parent="Panel/MarginContainer/TabContainer/Shop/Shop" instance=ExtResource("5_uysop")]
+layout_mode = 2
+missle_resource = ExtResource("10_jh1gc")
+
+[node name="Slot6" parent="Panel/MarginContainer/TabContainer/Shop/Shop" instance=ExtResource("5_uysop")]
+layout_mode = 2
+missle_resource = ExtResource("11_6irfs")
+
+[node name="Slot7" parent="Panel/MarginContainer/TabContainer/Shop/Shop" instance=ExtResource("5_uysop")]
+layout_mode = 2
+missle_resource = ExtResource("12_ue5rv")
+
+[node name="Slot8" parent="Panel/MarginContainer/TabContainer/Shop/Shop" instance=ExtResource("5_uysop")]
+layout_mode = 2
+missle_resource = ExtResource("13_yovka")
+
+[node name="Slot9" parent="Panel/MarginContainer/TabContainer/Shop/Shop" instance=ExtResource("5_uysop")]
+layout_mode = 2
+missle_resource = ExtResource("14_vurmt")
+
+[node name="Slot10" parent="Panel/MarginContainer/TabContainer/Shop/Shop" instance=ExtResource("5_uysop")]
+layout_mode = 2
+missle_resource = ExtResource("15_xgh2t")
+
+[node name="Skills" type="MarginContainer" parent="Panel/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Shop" type="GridContainer" parent="Panel/MarginContainer/TabContainer/Skills"]
+layout_mode = 2
+
+[node name="Slot" type="Panel" parent="Panel/MarginContainer/TabContainer/Skills/Shop"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+script = ExtResource("5_xgitf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/TabContainer/Skills/Shop/Slot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/TabContainer/Skills/Shop/Slot/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.77
+texture = ExtResource("5_y6oyt")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/TabContainer/Skills/Shop/Slot/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("4_tejwx")
+text = "Buy 10$"
+
+[node name="GameOver" type="ColorRect" parent="."]
+visible = false
+z_index = 20
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameOver/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_tejwx")
+theme_override_font_sizes/font_size = 30
+text = "Вы погибли:<"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GameOver/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_tejwx")
+theme_override_font_sizes/font_size = 30
+text = "Яростно выйти и пойти плакать"
+script = SubResource("GDScript_bi7yi")
+
+[connection signal="gui_input" from="MoneyLabel" to="MoneyLabel" method="_on_gui_input"]
+[connection signal="gui_input" from="XpLabel" to="XpLabel" method="_on_gui_input"]
+[connection signal="button_down" from="GameOver/CenterContainer/VBoxContainer/Button" to="GameOver/CenterContainer/VBoxContainer/Button" method="_on_button_down"]

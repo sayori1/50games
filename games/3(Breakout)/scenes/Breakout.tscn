@@ -1,0 +1,158 @@
+[gd_scene load_steps=12 format=3 uid="uid://cdldfcbq1ng51"]
+
+[ext_resource type="Texture2D" uid="uid://dbphlgt1agwhy" path="res://games/3(Breakout)/images/56-Breakout-Tiles.png" id="1_wu01l"]
+[ext_resource type="Script" path="res://games/3(Breakout)/scripts/actor.gd" id="1_ygovv"]
+[ext_resource type="Texture2D" uid="uid://6k2gpfrdityt" path="res://games/3(Breakout)/images/58-Breakout-Tiles.png" id="3_qbrpw"]
+[ext_resource type="Script" path="res://games/3(Breakout)/scripts/bricks.gd" id="4_elnbj"]
+[ext_resource type="AudioStream" uid="uid://dcff8qa4g32qu" path="res://games/3(Breakout)/audio/Instupendo-Six-Forty-Seven-YouTube.mp3" id="5_kvbyr"]
+[ext_resource type="VideoStream" path="res://games/3(Breakout)/audio/Kotyonka-vzryvayut-original-YouTube.ogv" id="6_w5hum"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t0tlo"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b5ua5"]
+radius = 21.0238
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26tby"]
+size = Vector2(278.5, 53.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v74c"]
+size = Vector2(1167, 18)
+
+[sub_resource type="GDScript" id="GDScript_vaf3u"]
+script/source = "extends Label
+
+var alpha = 0
+var duration = 10
+var running = false
+@onready var ball: RigidBody2D = $\"../../Ball\"
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = %Music
+@onready var video_stream_player: VideoStreamPlayer = $\"../VideoStreamPlayer\"
+
+	
+func start():
+	audio_stream_player_2d.play()
+	running = true
+	visible = true
+
+
+func _process(delta: float) -> void:
+	if(running):
+		alpha += delta
+		var x = alpha / duration
+		visible_ratio = x * x
+		if(alpha >= duration):
+			alpha = 0
+			running = false
+			video_stream_player.play()
+			await video_stream_player.finished
+			get_tree().quit()
+"
+
+[node name="Breakout" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2(578, 359)
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_t0tlo")
+metadata/_edit_group_ = true
+
+[node name="58-breakout-tiles" type="Sprite2D" parent="Ball"]
+position = Vector2(-2, 0)
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("3_qbrpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2(-3, 0)
+shape = SubResource("CircleShape2D_b5ua5")
+
+[node name="Actor" type="CharacterBody2D" parent="."]
+position = Vector2(569, 601)
+motion_mode = 1
+script = ExtResource("1_ygovv")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Actor"]
+position = Vector2(-1.64856, 20)
+scale = Vector2(0.390625, 0.390625)
+texture = ExtResource("1_wu01l")
+
+[node name="Area2D" type="Area2D" parent="Actor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Actor/Area2D"]
+position = Vector2(-1, 20.6875)
+shape = SubResource("RectangleShape2D_26tby")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(573.5, -10)
+shape = SubResource("RectangleShape2D_3v74c")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(573.5, 654)
+shape = SubResource("RectangleShape2D_3v74c")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-4, 366)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_3v74c")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1147, 366)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_3v74c")
+
+[node name="Bricks" type="Node2D" parent="."]
+script = ExtResource("4_elnbj")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+visible = false
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -486.0
+offset_top = -116.5
+offset_right = 486.0
+offset_bottom = 116.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Ну вот, ты сломал кирпичи. Теперь тебе нечего делать и ты останешься навсегда один в этом черном пустом пространстве. Этого ты добивался?"
+horizontal_alignment = 1
+autowrap_mode = 2
+script = SubResource("GDScript_vaf3u")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="Control"]
+unique_name_in_owner = true
+stream = ExtResource("5_kvbyr")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("6_w5hum")
+expand = true
+
+[connection signal="body_entered" from="Actor/Area2D" to="Actor" method="_on_area_2d_body_entered"]

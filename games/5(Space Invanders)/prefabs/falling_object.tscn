@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlknm0in4htxh"]
+
+[ext_resource type="Texture2D" uid="uid://dsh4rb3u5oi6a" path="res://games/5(Space Invanders)/images/Meteors/spaceMeteors_001.png" id="1_gdqow"]
+[ext_resource type="Script" path="res://games/5(Space Invanders)/scripts/falling_object.gd" id="2_iwgbe"]
+
+[node name="Node2D" type="Sprite2D"]
+z_index = -3
+position = Vector2(526, 0)
+texture = ExtResource("1_gdqow")
+script = ExtResource("2_iwgbe")

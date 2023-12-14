@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://sxgful35nt2"]
+
+[ext_resource type="Script" path="res://games/5(Space Invanders)/scripts/missle.gd" id="1_avx5v"]
+[ext_resource type="Texture2D" uid="uid://4sx5bdu1uxoy" path="res://games/5(Space Invanders)/images/Missiles/spaceMissiles_001.png" id="1_tfq83"]
+[ext_resource type="Texture2D" uid="uid://cggsadgj4o4u6" path="res://games/5(Space Invanders)/images/Effects/spaceEffects_008.png" id="2_3g8n3"]
+
+[sub_resource type="Gradient" id="Gradient_dp5kh"]
+colors = PackedColorArray(1, 0.428883, 0.32895, 1, 1, 0.551614, 0.6397, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8h6t"]
+size = Vector2(20, 31)
+
+[node name="Missle" type="Node2D"]
+script = ExtResource("1_avx5v")
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 21)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_3g8n3")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(1, 600)
+spread = 51.08
+gravity = Vector2(0, 20)
+radial_accel_min = 36.48
+radial_accel_max = 50.0
+scale_amount_min = 0.1
+color_ramp = SubResource("Gradient_dp5kh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tfq83")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_t8h6t")

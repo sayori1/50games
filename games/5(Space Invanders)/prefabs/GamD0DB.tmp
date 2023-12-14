@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cod16m5i2ghiv"]
+
+[ext_resource type="PackedScene" uid="uid://c7dq81yjv8tqr" path="res://games/5(Space Invanders)/prefabs/Spaceship.tscn" id="1_mqe7i"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Spaceship" parent="." instance=ExtResource("1_mqe7i")]
+position = Vector2(553, 561)

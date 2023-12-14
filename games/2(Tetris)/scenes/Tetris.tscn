@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://byotbgcyeb7je"]
+
+[ext_resource type="FontFile" uid="uid://cadt6qi1i8f5n" path="res://fonts/Goldman-Bold.ttf" id="1_ggxaq"]
+[ext_resource type="Script" path="res://games/2(Tetris)/scripts/tetris.gd" id="1_ovwda"]
+[ext_resource type="Script" path="res://games/2(Tetris)/scripts/figure.gd" id="2_bx8bw"]
+[ext_resource type="Script" path="res://games/2(Tetris)/scripts/running_label.gd" id="2_jor5j"]
+[ext_resource type="Shader" path="res://games/2(Tetris)/shaders/vhs.gdshader" id="5_s6j0b"]
+[ext_resource type="Script" path="res://games/2(Tetris)/scripts/audio_stream_player.gd" id="6_23ljf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p26ow"]
+shader = ExtResource("5_s6j0b")
+shader_parameter/tape_wave_amount = 0.003
+shader_parameter/tape_crease_amount = 2.5
+shader_parameter/color_displacement = 1.0
+shader_parameter/lines_velocity = 0.1
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 60.0
+offset_right = 318.0
+offset_bottom = 337.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ggxaq")
+theme_override_font_sizes/font_size = 40
+text = "Score: 0"
+script = ExtResource("2_jor5j")
+
+[node name="Tetris" type="Control" parent="."]
+custom_minimum_size = Vector2(640, 1280)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -640.0
+offset_right = 320.0
+offset_bottom = 640.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ovwda")
+
+[node name="Figure" type="Node" parent="Tetris"]
+script = ExtResource("2_bx8bw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_p26ow")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioListener2D" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("6_23ljf")
