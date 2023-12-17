@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://clsddp2vxufpb"]
+
+[ext_resource type="Texture2D" uid="uid://inbktrwpvj7u" path="res://games/6(Minesweeper)/images/empty_128x128.png" id="1_ity7j"]
+[ext_resource type="Script" path="res://games/6(Minesweeper)/scripts/slot.gd" id="2_dfvfo"]
+
+[node name="Slot" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)
+texture = ExtResource("1_ity7j")
+expand_mode = 4
+stretch_mode = 5
+script = ExtResource("2_dfvfo")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
