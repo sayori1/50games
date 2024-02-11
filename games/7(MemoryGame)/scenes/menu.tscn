@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwhblopecdaj8"]
+
+[ext_resource type="Script" path="res://games/7(MemoryGame)/scripts/menu.gd" id="1_4bg4c"]
+[ext_resource type="Texture2D" uid="uid://cbphnfmklyppg" path="res://games/7(MemoryGame)/images/snapy_pairs_logo.png" id="1_7hyhq"]
+[ext_resource type="Script" path="res://games/7(MemoryGame)/scripts/logo.gd" id="2_b8m2r"]
+[ext_resource type="FontFile" uid="uid://dr1f8bbdljsu" path="res://games/7(MemoryGame)/font/Pacifico-Regular.ttf" id="3_qk1kq"]
+[ext_resource type="Texture2D" uid="uid://cct6cc04wohr0" path="res://games/7(MemoryGame)/images/blue_button05.png" id="4_50o0s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iirus"]
+texture = ExtResource("4_50o0s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_glgak"]
+texture = ExtResource("4_50o0s")
+modulate_color = Color(1, 1, 1, 0.835294)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_prudk"]
+texture = ExtResource("4_50o0s")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4bg4c")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121569, 0.286275, 0.431373, 1)
+
+[node name="Logo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_top = 139.0
+offset_right = -0.5
+offset_bottom = 139.0
+grow_horizontal = 2
+rotation = 6.28319
+script = ExtResource("2_b8m2r")
+
+[node name="Logo" type="TextureRect" parent="Logo"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -185.0
+offset_top = -80.0
+offset_right = 185.0
+offset_bottom = 152.0
+grow_horizontal = 2
+texture = ExtResource("1_7hyhq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_right = 109.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_qk1kq")
+theme_override_font_sizes/font_size = 30
+text = "Memory game"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -100.0
+offset_right = 95.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_iirus")
+theme_override_styles/hover = SubResource("StyleBoxTexture_glgak")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_prudk")
+
+[node name="Label" type="Label" parent="PlayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_qk1kq")
+theme_override_font_sizes/font_size = 30
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="PlayButton" to="." method="_on_play_button_button_down"]

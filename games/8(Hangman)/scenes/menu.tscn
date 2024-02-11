@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4jfdvu5usdio"]
+
+[ext_resource type="Texture2D" uid="uid://nf6q0k6qb11a" path="res://games/8(Hangman)/assets/textures/chalkboard.png" id="1_1pdjx"]
+[ext_resource type="Script" path="res://games/8(Hangman)/scripts/main_menu.gd" id="1_brpnc"]
+[ext_resource type="FontFile" uid="uid://ckdhmlcbijnfi" path="res://games/8(Hangman)/assets/font/Laptev_Brush.otf" id="2_1dquu"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_brpnc")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1pdjx")
+stretch_mode = 1
+
+[node name="Content" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Content"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1dquu")
+theme_override_font_sizes/font_size = 50
+text = "Виселица"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Content"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Play" type="Button" parent="Content"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1dquu")
+theme_override_font_sizes/font_size = 40
+text = "Играть"
+flat = true
+
+[node name="Settings" type="Button" parent="Content"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1dquu")
+theme_override_font_sizes/font_size = 40
+text = "Настройки"
+flat = true
+
+[node name="Exit" type="Button" parent="Content"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_1dquu")
+theme_override_font_sizes/font_size = 40
+text = "Выйти"
+flat = true
+
+[connection signal="button_down" from="Content/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="Content/Settings" to="." method="_on_settings_button_down"]
+[connection signal="button_down" from="Content/Exit" to="." method="_on_exit_button_down"]

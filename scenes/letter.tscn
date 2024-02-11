@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpf3fgay50esw"]
+
+[ext_resource type="FontFile" uid="uid://ckdhmlcbijnfi" path="res://games/8(Hangman)/assets/font/Laptev_Brush.otf" id="1_mqfon"]
+
+[node name="Button" type="Button"]
+offset_right = 73.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("1_mqfon")
+theme_override_font_sizes/font_size = 60
+text = "А"
+flat = true

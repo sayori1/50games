@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd3lobabqedj8"]
+
+[ext_resource type="Script" path="res://games/7(MemoryGame)/scripts/card.gd" id="1_cukck"]
+[ext_resource type="Texture2D" uid="uid://n3sh1gcmtu2r" path="res://games/7(MemoryGame)/images/card0.png" id="2_q1ncs"]
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(140, 190)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cukck")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 140.0
+offset_bottom = 190.0
+pivot_offset = Vector2(69, 95)
+texture = ExtResource("2_q1ncs")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

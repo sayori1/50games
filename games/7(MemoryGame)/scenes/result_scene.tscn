@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4o7o2ygqpvxc"]
+
+[ext_resource type="Script" path="res://games/7(MemoryGame)/scripts/result_scene.gd" id="1_37x3w"]
+[ext_resource type="PackedScene" uid="uid://c1qmr8paf7jxl" path="res://games/7(MemoryGame)/modules/confetti/fake_confetti_particles.tscn" id="1_y75b7"]
+[ext_resource type="FontFile" uid="uid://dr1f8bbdljsu" path="res://games/7(MemoryGame)/font/Pacifico-Regular.ttf" id="3_qjtfc"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_37x3w")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121569, 0.286275, 0.431373, 1)
+
+[node name="Confetti" type="Node2D" parent="."]
+
+[node name="FakeConfettiParticles" parent="Confetti" instance=ExtResource("1_y75b7")]
+position = Vector2(85, 168)
+
+[node name="FakeConfettiParticles2" parent="Confetti" instance=ExtResource("1_y75b7")]
+position = Vector2(998, 197)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -269.0
+offset_top = 23.0
+offset_right = 269.0
+offset_bottom = 274.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_qjtfc")
+theme_override_font_sizes/font_size = 70
+text = "Ура  ура ура ура.
+Вы победили! ааа"
+
+[node name="IQLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -336.0
+offset_top = 298.0
+offset_right = 336.0
+offset_bottom = 422.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_qjtfc")
+theme_override_font_sizes/font_size = 50
+text = "Ваш IQ составляет: "
+horizontal_alignment = 1
+
+[node name="SmarterThanLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -143.5
+offset_top = 408.0
+offset_right = 143.5
+offset_bottom = 532.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_qjtfc")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1

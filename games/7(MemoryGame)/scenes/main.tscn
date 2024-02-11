@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3xsu38me1gba"]
+
+[ext_resource type="Script" path="res://games/7(MemoryGame)/scripts/card_manager.gd" id="1_n8c0b"]
+[ext_resource type="Script" path="res://games/7(MemoryGame)/scripts/game.gd" id="1_tfvk2"]
+[ext_resource type="FontFile" uid="uid://dr1f8bbdljsu" path="res://games/7(MemoryGame)/font/Pacifico-Regular.ttf" id="3_wc4au"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tfvk2")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121569, 0.286275, 0.431373, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 171.0
+offset_bottom = 187.0
+
+[node name="TimerLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wc4au")
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(640, 640)
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+script = ExtResource("1_n8c0b")
